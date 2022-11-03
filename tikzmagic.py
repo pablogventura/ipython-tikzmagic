@@ -132,7 +132,7 @@ class TikzMagics(Magics):
 
         try:
             # only forward output to the notebook if there's an error
-            cmd = "pdflatex --shell-escape tikz.tex"
+            cmd = "latex tikz.tex"
             p = Popen(cmd,
                       shell=True,
                       env=env,
@@ -161,7 +161,7 @@ class TikzMagics(Magics):
         chdir(dir)
 
         try:
-            retcode = call("pdf2svg tikz.pdf tikz.svg", shell=True)
+            retcode = call("dvisvgm --zoom=-1 --exact --font-format=woff tikz.dvi", shell=True)
             if retcode != 0:
                 print("pdf2svg terminated with signal", -retcode, file=sys.stderr)
         except OSError as e:
