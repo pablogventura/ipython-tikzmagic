@@ -335,9 +335,8 @@ class TikzMagics(Magics):
             tikz_package = 'tikz'
 
         tex = []
-#\\documentclass[convert={convertexe={%(imagemagick_path)s},%(add_params)ssize=%(width)sx%(height)s,outext=.png},border=0pt]{standalone}
         tex.append('''
-\\documentclass[dvisvgm]{standalone}
+\\documentclass[convert={convertexe={%(imagemagick_path)s},%(add_params)ssize=%(width)sx%(height)s,outext=.png},border=0pt]{standalone}
 ''' % locals())
 
         tex.append('\\usepackage[%(tikz_options)s]{%(tikz_package)s}\n' % locals())
