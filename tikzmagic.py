@@ -297,6 +297,8 @@ class TikzMagics(Magics):
         latex_package = args.package.split(',')
         imagemagick_path = args.imagemagick
         picture_options = args.pictureoptions
+        if picture_options.startswith('"'):
+            picture_options = picture_options[1:-1]
         tikz_options = args.tikzoptions
 
         # arguments 'code' in line are prepended to the cell lines
